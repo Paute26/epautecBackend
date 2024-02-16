@@ -69,9 +69,9 @@ public class ProductoServices {
 
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    public Response buscarProductoPorId(@QueryParam("id") int id) {
+    public Response buscarProductoPorNombre(@QueryParam("nombre") String nombre) {
         try {
-            Producto producto = gestionProductos.buscarProducto(id);
+            Producto producto = gestionProductos.getProductoPorNombre(nombre);
             return Response.ok(producto).build();
         } catch (Exception e) {
             ErrorMessage error = new ErrorMessage(4, "Producto no encontrado");

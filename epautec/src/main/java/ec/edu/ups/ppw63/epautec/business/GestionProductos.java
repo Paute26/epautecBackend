@@ -4,6 +4,7 @@ import java.util.List;
 
 import ec.edu.ups.ppw63.epautec.dao.ProductoDAO;
 import ec.edu.ups.ppw63.epautec.model.Producto;
+import ec.edu.ups.ppw63.epautec.model.Usuario;
 import jakarta.ejb.Stateless;
 import jakarta.inject.Inject;
 
@@ -35,6 +36,11 @@ public class GestionProductos {
 		if(id <= 0) 
 			throw new Exception("ID inválido");
 		return daoProducto.read(id);
+	}
+	public Producto getProductoPorNombre(String nombre) throws Exception {
+		if(nombre.length() < 0) 
+			throw new Exception("Campo Vacio");
+		return daoProducto.getProductoPorNombre(nombre);
 	}
 	
 	public void borrarProducto(int id) {
